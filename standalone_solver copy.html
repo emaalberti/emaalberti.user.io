@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equation Puzzle Solver - Multi Livello</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen p-4 md:p-8">
+    <div class="max-w-6xl mx-auto">
+        <div class="bg-white rounded-lg shadow-xl p-6 md:p-8 mb-6">
+            <div class="flex items-center gap-3 mb-2">
+                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                </svg>
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-800">
+                    Solver Multi-Livello
+                </h1>
+            </div>
+            <p class="text-gray-600">
+                Inserisci il numero target e premi Invio (o clicca Calcola) per trovare tutte le soluzioni!
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Level 9 -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-2">Livello 9</h2>
+                <p class="text-sm text-gray-600">a × b + c + d = risultato</p>
+                <input id="target9" type="text" placeholder="Es: 50" class="border p-2 w-full my-2"/>
+                <button onclick="solve(9)" class="bg-blue-600 text-white px-4 py-2 rounded">Calcola</button>
+                <div id="time9"></div>
+                <div id="results9"></div>
+            </div>
+
+            <!-- Level 10 -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-2">Livello 10</h2>
+                <p class="text-sm text-gray-600">a × b × c = risultato</p>
+                <input id="target10" type="text" placeholder="Es: 120" class="border p-2 w-full my-2"/>
+                <button onclick="solve(10)" class="bg-blue-600 text-white px-4 py-2 rounded">Calcola</button>
+                <div id="time10"></div>
+                <div id="results10"></div>
+            </div>
+
+            <!-- Level 11 -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-2">Livello 11</h2>
+                <p class="text-sm text-gray-600">a × b × c + d = risultato</p>
+                <input id="target11" type="text" placeholder="Es: 339" class="border p-2 w-full my-2"/>
+                <button onclick="solve(11)" class="bg-blue-600 text-white px-4 py-2 rounded">Calcola</button>
+                <div id="time11"></div>
+                <div id="results11"></div>
+            </div>
+
+            <!-- Level 12 -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-2">Livello 12</h2>
+                <p class="text-sm text-gray-600">(a × b × c) + d - e = risultato</p>
+                <input id="target12" type="text" placeholder="Es: 330" class="border p-2 w-full my-2"/>
+                <button onclick="solve(12)" class="bg-blue-600 text-white px-4 py-2 rounded">Calcola</button>
+                <div id="time12"></div>
+                <div id="results12"></div>
+            </div>
+
+            <!-- Level 13 -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-2">Livello 13</h2>
+                <p class="text-sm text-gray-600">(a × b) + c - d = risultato</p>
+                <input id="target13" type="text" placeholder="Es: 25" class="border p-2 w-full my-2"/>
+                <button onclick="solve(13)" class="bg-blue-600 text-white px-4 py-2 rounded">Calcola</button>
+                <div id="time13"></div>
+                <div id="results13"></div>
+            </div>
+
+            <!-- Level 14 -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-2">Livello 14</h2>
+                <p class="text-sm text-gray-600">a + b - c + d = risultato</p>
+                <input id="target14" type="text" placeholder="Es: 12" class="border p-2 w-full my-2"/>
+                <button onclick="solve(14)" class="bg-blue-600 text-white px-4 py-2 rounded">Calcola</button>
+                <div id="time14"></div>
+                <div id="results14"></div>
+            </div>
+
+            <!-- Level 15 -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-2">Livello 15</h2>
+                <p class="text-sm text-gray-600">(a × b) + c = risultato</p>
+                <input id="target15" type="text" placeholder="Es: 17" class="border p-2 w-full my-2"/>
+                <button onclick="solve(15)" class="bg-blue-600 text-white px-4 py-2 rounded">Calcola</button>
+                <div id="time15"></div>
+                <div id="results15"></div>
+            </div>
+
+            <!-- Level 16 -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-2">Livello 16</h2>
+                <p class="text-sm text-gray-600">(a × b) - c = risultato</p>
+                <input id="target16" type="text" placeholder="Es: 20" class="border p-2 w-full my-2"/>
+                <button onclick="solve(16)" class="bg-blue-600 text-white px-4 py-2 rounded">Calcola</button>
+                <div id="time16"></div>
+                <div id="results16"></div>
+            </div>
+
+            <!-- Level 17 -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-2">Livello 17</h2>
+                <p class="text-sm text-gray-600">(a × b) + c + d = risultato</p>
+                <input id="target17" type="text" placeholder="Es: 30" class="border p-2 w-full my-2"/>
+                <button onclick="solve(17)" class="bg-blue-600 text-white px-4 py-2 rounded">Calcola</button>
+                <div id="time17"></div>
+                <div id="results17"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function solve(level) {
+            const target = parseInt(document.getElementById(`target${level}`).value);
+            if (isNaN(target)) return;
+            const digits = [1,2,3,4,5,6,7,8,9];
+            const found = [];
+            const start = performance.now();
+
+            if (level===9){
+                for(let a of digits) for(let b of digits) for(let c of digits) for(let d of digits){
+                    if(new Set([a,b,c,d]).size<4) continue;
+                    if(a*b+c+d===target) found.push(`${a} × ${b} + ${c} + ${d}`);
+                }
+            } else if(level===10){
+                for(let a of digits) for(let b of digits) for(let c of digits){
+                    if(new Set([a,b,c]).size<3) continue;
+                    if(a*b*c===target) found.push(`${a} × ${b} × ${c}`);
+                }
+            } else if(level===11){
+                for(let a of digits) for(let b of digits) for(let c of digits) for(let d of digits){
+                    if(new Set([a,b,c,d]).size<4) continue;
+                    if(a*b*c+d===target) found.push(`${a} × ${b} × ${c} + ${d}`);
+                }
+            } else if(level===12){
+                for(let a of digits) for(let b of digits) for(let c of digits) for(let d of digits) for(let e of digits){
+                    if(new Set([a,b,c,d,e]).size<5) continue;
+                    if(a*b*c+d-e===target) found.push(`(${a} × ${b} × ${c}) + ${d} - ${e}`);
+                }
+            } else if(level===13){
+                for(let a of digits) for(let b of digits) for(let c of digits) for(let d of digits){
+                    if(new Set([a,b,c,d]).size<4) continue;
+                    if(a*b+c-d===target) found.push(`(${a} × ${b}) + ${c} - ${d}`);
+                }
+            } else if(level===14){
+                for(let a of digits) for(let b of digits) for(let c of digits) for(let d of digits){
+                    if(new Set([a,b,c,d]).size<4) continue;
+                    if(a+b-c+d===target) found.push(`${a} + ${b} - ${c} + ${d}`);
+                }
+            } else if(level===15){
+                for(let a of digits) for(let b of digits) for(let c of digits){
+                    if(new Set([a,b,c]).size<3) continue;
+                    if(a*b+c===target) found.push(`(${a} × ${b}) + ${c}`);
+                }
+            } else if(level===16){
+                for(let a of digits) for(let b of digits) for(let c of digits){
+                    if(new Set([a,b,c]).size<3) continue;
+                    if(a*b-c===target) found.push(`(${a} × ${b}) - ${c}`);
+                }
+            } else if(level===17){
+                for(let a of digits) for(let b of digits) for(let c of digits) for(let d of digits){
+                    if(new Set([a,b,c,d]).size<4) continue;
+                    if(a*b+c+d===target) found.push(`(${a} × ${b}) + ${c} + ${d}`);
+                }
+            }
+
+            const end = performance.now();
+            document.getElementById(`time${level}`).textContent = `Trovate ${found.length} soluzioni in ${(end-start).toFixed(1)} ms`;
+            document.getElementById(`results${level}`).innerHTML = found.slice(0,2).map(f => 
+    `<div class="border p-2 rounded bg-green-50">${f} = ${target}</div>`
+).join('');
+        }
+
+        // enable Enter key for all inputs
+        for (let lvl=9; lvl<=17; lvl++) {
+            document.getElementById(`target${lvl}`).addEventListener('keypress', e=>{
+                if(e.key==="Enter") solve(lvl);
+            });
+        }
+    </script>
+</body>
+</html>
